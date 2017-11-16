@@ -4,11 +4,11 @@ Laravel Csv Request Parser
 Perform internal data validation and parsing of the CSV file.
 
 ## Description
-Parsing the request of CSV file received by Laravel, validate the internal data and extract it.
+Parsing the request of CSV file received by Laravel, validate the internal data and extract it.  
 Currently it is implemented assuming to convert the input of SJIS-win to UTF-8.
 
 ## Requirement
-"php": ">=7.0"
+"php": ">=7.0"  
 "laravel/framework": "5.1.*|5.2.*|5.3.*|5.4.*"
 
 ## Usage
@@ -19,8 +19,8 @@ Create request class.
 php artisan make:request UserCsvRequest
 ```
 
-Extend the ```CsvRequest``` class and remove the ```rules``` method.
-Then implement the ```csvRules``` method.
+Extend the ```CsvRequest``` class and remove the ```rules``` method.  
+Then implement the ```csvRules``` method.  
 This method is the validation rule of CSV internal data.
 
 ```
@@ -48,9 +48,9 @@ class UserCsvRequest extends CsvRequest
 }
 ```
 
-Instantiate with the controller and run ```getCsvIterator```.
-```getCsvIterator``` returns a generator, so you can loop it foreach.
-Since the data retrieved for each loop is wrapped in ```Illuminate\Support\Collection```, retrieve and use the internal data with the all method or get method.
+Instantiate with the controller and run ```getCsvIterator```.  
+```getCsvIterator``` returns a generator, so you can loop it foreach.  
+Since the data retrieved for each loop is wrapped in ```Illuminate\Support\Collection```, retrieve and use the internal data with the all method or get method.  
 The name of the data matches the definition of ```csvRules```.
 
 ```
@@ -79,7 +79,7 @@ class UserController extends Controller
 }
 ```
 
-If validation fails, automatic redirection occurs and errors are stored in the ```$ errors``` variable of the blade template.
+If validation fails, automatic redirection occurs and errors are stored in the ```$ errors``` variable of the blade template.  
 As ```csv_column_number``` stores the wording on what line the error occurred, check the existence and display an error.
 
 ```
