@@ -15,7 +15,7 @@ Currently it is implemented assuming to convert the input of SJIS-win to UTF-8.
 
 Create request class.
 
-```
+```bash
 php artisan make:request UserCsvRequest
 ```
 
@@ -23,7 +23,7 @@ Extend the ```CsvRequest``` class and remove the ```rules``` method.
 Then implement the ```csvRules``` method.  
 This method is the validation rule of CSV internal data.
 
-```
+```php
 <?php
 
 namespace App\Http\Requests;
@@ -53,7 +53,7 @@ Instantiate with the controller and run ```getCsvIterator```.
 Since the data retrieved for each loop is wrapped in ```Illuminate\Support\Collection```, retrieve and use the internal data with the all method or get method.  
 The name of the data matches the definition of ```csvRules```.
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -82,7 +82,7 @@ class UserController extends Controller
 If validation fails, automatic redirection occurs and errors are stored in the ```$ errors``` variable of the blade template.  
 As ```csv_column_number``` stores the wording on what line the error occurred, check the existence and display an error.
 
-```
+```php
 @if($errors->has('csv_column_number'))
     @foreach($errors->all() as $error)
     <div class="label label-error">{{ $error }}</div>
@@ -92,7 +92,7 @@ As ```csv_column_number``` stores the wording on what line the error occurred, c
 
 ## Install
 
-```
+```bash
 composer config repositories.csvrequest vcs https://github.com/morisuke/laravel-csv-request.git
 composer require morisuke/laravel-csv-request
 ```
