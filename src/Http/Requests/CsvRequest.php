@@ -169,7 +169,8 @@ abstract class CsvRequest extends FormRequest
 
             // 各行のデータをUTF-8変換
             $column = array_map(function($v) {
-                return mb_convert_encoding($v, 'UTF-8', 'ASCII,UTF-8,SJIS-win');
+                $v = mb_convert_encoding($v, 'UTF-8', 'ASCII,UTF-8,SJIS-win');
+                return ($v === '') ? null : $v;
             }, $column);
 
             // バリデーション対象行数
